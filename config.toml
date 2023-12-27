@@ -1,0 +1,26 @@
+baseURL = 'http://HirofumiTsuda.github.io/blog'
+languageCode = 'en-us'
+title = 'Diary and Notes: Hirofumi Tsuda'
+
+
+[params]
+title = "Coffee, Codes, Mathematics and Heavy Metal"
+author = "Hirofumi Tsuda"
+description = "A warehouse of my thoughts, ideas and studies"
+profilePicture = "assets/images/profile.jpeg"
+
+[params.math]
+enable = false
+use = "mathjax"
+
+[[params.socialIcons]]
+icon = "fab fa-linkedin"
+title = "Linkedin"
+url = "https://www.linkedin.com/in/hirofumitsuda23/"
+
+[module]
+  # uncomment line below for temporary local development of module
+  # replacements = "github.com/lxndrblz/anatole -> ../../anatole"
+  [[module.imports]]
+    path = "github.com/lxndrblz/anatole"
+    disable = false
