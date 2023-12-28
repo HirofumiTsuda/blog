@@ -3,6 +3,8 @@ title: "Proof of Rayleigh Quotient"
 date: 2023-12-26T19:51:06+09:00
 draft: false
 math: true
+categories: [ "math" ]
+tags: ["optimization"]
 ---
 
 <!--more-->

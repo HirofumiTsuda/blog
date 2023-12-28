@@ -7,7 +7,7 @@ title = 'Diary and Notes: Hirofumi Tsuda'
 title = "Coffee, Codes, Mathematics and Heavy Metal"
 author = "Hirofumi Tsuda"
 description = "A warehouse of my thoughts, ideas and studies"
-profilePicture = "assets/images/profile.jpeg"
+profilePicture = "assets/images/profile/profile.jpeg"
 
 [params.math]
 enable = false
@@ -15,8 +15,26 @@ use = "mathjax"
 
 [[params.socialIcons]]
 icon = "fab fa-linkedin"
-title = "Linkedin"
 url = "https://www.linkedin.com/in/hirofumitsuda23/"
+
+[menu]
+
+  [[menu.main]]
+  name = "Home"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
+  [[menu.main]]
+  name = "Posts"
+  weight = 200
+  identifier = "posts"
+  url = "/posts/"
+
+
+[taxonomies]
+    tag = "tags"
+    category = "categories"
 
 [module]
   # uncomment line below for temporary local development of module
