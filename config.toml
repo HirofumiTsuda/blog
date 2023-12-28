@@ -26,10 +26,24 @@ url = "https://www.linkedin.com/in/hirofumitsuda23/"
   url = "/"
 
   [[menu.main]]
-  name = "Posts"
+  name = "All Posts"
   weight = 200
   identifier = "posts"
   url = "/posts/"
+
+  [[menu.main]]
+  name = "Categories"
+  weight = 200
+  identifier = "categories"
+  url = "/categories/"
+
+
+  [[menu.main]]
+  name = "Tags"
+  weight = 200
+  identifier = "tags"
+  url = "/tags/"
+
 
 
 [taxonomies]
