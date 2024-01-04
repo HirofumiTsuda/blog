@@ -17,7 +17,7 @@ As shown in [this article](https://docs.snowflake.com/en/user-guide/cost-underst
 
 The core of this Query Processing service is a warehouse. Let us start with a warehouse.
 
-## Warehouse
+## Abstract of Warehouse
 
 A warehouse is where queries are processed and executed. On AWS, it means EC2 instances (Snowflake does not publish what instance type is used though). 
 As a parameter assigned to a warehouse, a size is what you have to choose. Its size follows ones of T-shirts like XS, S and M... Once you choose an one size larger warehouse,
@@ -38,7 +38,13 @@ While that warehouse sleeps, no costs are incurred.
 Finally, the minimum duration is 1 minute. If you don't use a warehouse for less than 1 minute, it is considered that you use that warehouse for 1 minute.
 Therefore it is necessary to pay attention to execute a query taking short time.
 
+## Local Cache at Warehouse
 
+A warehouse has its own local cache. When a query is processed intermediated results are put on the cache. Those data are used for processing queries and that leads to achieve faster processing than one without using any cache (cold-start).
+Those data on a cache gets invalid when the warehouse turns off. 
 
+## Conclusion
 
+It is important to know about warehouses to guess costs mainly incurred for snowflake. 
 
+Abstracts of two architectures have been seen so far. The remaining `Database Storage` architecture would be shown next.
