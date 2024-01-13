@@ -29,8 +29,10 @@ The quantity stays through a transformation like $\mathbf{x} \rightarrow \alpha\
 
 $$ 
 \begin{equation}
-\min_{\mathbf{x} \in \mathbb{R}^n} \mathbf{x}^\top A \mathbf{x} \\\
-s.t. ||\mathbf{x}|| = 1.
+\begin{split}
+&\min_{\mathbf{x} \in \mathbb{R}^n} \mathbf{x}^\top A \mathbf{x} \\\
+s.t. & ||\mathbf{x}|| = 1.
+\end{split}
 \end{equation}
 $$
 
@@ -58,6 +60,7 @@ The bound comes from the fact $\\{a_i\\}$ has the $l_2$ norm-constraint.
 It is clear that the optimal value is achieved when a corresponding eigenvector is chosen as $\mathbf{x}$. In the same manner, one with maximization is achieved.
 
 ## Conclusion
+
 Here a Rayleigh Quotient is shown. This problem often appears in cases where the value of a norm is fixed. For example, energy is given and fixed.
 
 This quotient can be extended into manifolds like Stiefel manifold and Grassmann manifold...but honestly I have not understood them! Since they denote subspaces in a vector space, they often appear in our real world!
