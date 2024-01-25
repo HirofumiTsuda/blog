@@ -1,0 +1,99 @@
+<!doctype html><html dir=ltr lang=en data-theme class="html theme--light"><head><title>Hirofumi Tsuda
+|
+Implicit feedback for personalized ranking using Bayes theorem</title><meta charset=utf-8><meta name=generator content="Hugo 0.119.0"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name=author content="Hirofumi Tsuda"><meta name=description content="A warehouse of my thoughts, ideas and studies"><link rel=stylesheet href=/blog/scss/main.min.1147aa5bacb4bce677a0e264073829caedb82fd18ea07a5f1d80521f539d1c45.css integrity="sha256-EUeqW6y0vOZ3oOJkBzgpyu24L9GOoHpfHYBSH1OdHEU=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/blog/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/blog/fontawesome/css/fontawesome.min.7d272de35b410fb165377550cdf9c4d3a80fbbcc961e111914e4d5c0eaf5729f.css integrity="sha256-fSct41tBD7FlN3VQzfnE06gPu8yWHhEZFOTVwOr1cp8=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/blog/fontawesome/css/solid.min.55d8333481b07a08e07cf6f37319753a2b47e99f4c395394c5747b48b495aa9b.css integrity="sha256-VdgzNIGwegjgfPbzcxl1OitH6Z9MOVOUxXR7SLSVqps=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/blog/fontawesome/css/regular.min.a7448d02590b43449364b6b5922ed9af5410abb4de4238412a830316dedb850b.css integrity="sha256-p0SNAlkLQ0STZLa1ki7Zr1QQq7TeQjhBKoMDFt7bhQs=" crossorigin=anonymous type=text/css><link rel=stylesheet href=/blog/fontawesome/css/brands.min.9ed75a5d670c953fe4df935937674b4646f92674367e9e66eb995bb04e821647.css integrity="sha256-ntdaXWcMlT/k35NZN2dLRkb5JnQ2fp5m65lbsE6CFkc=" crossorigin=anonymous type=text/css><link rel="shortcut icon" href=/blog/favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=/blog/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/blog/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/blog/favicon-16x16.png><link rel=canonical href=http://HirofumiTsuda.github.io/blog/posts/implicit_bayes/><script type=text/javascript src=/blog/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js integrity="sha256-+RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI=" crossorigin=anonymous></script>
+<script type=text/javascript src=/blog/js/anatole-theme-switcher.min.d6d329d93844b162e8bed1e915619625ca91687952177552b9b3e211014a2957.js integrity="sha256-1tMp2ThEsWLovtHpFWGWJcqRaHlSF3VSubPiEQFKKVc=" crossorigin=anonymous></script><meta name=twitter:card content="summary"><meta name=twitter:title content="Implicit feedback for personalized ranking using Bayes theorem"><meta name=twitter:description content><meta property="og:title" content="Implicit feedback for personalized ranking using Bayes theorem"><meta property="og:description" content><meta property="og:type" content="article"><meta property="og:url" content="http://HirofumiTsuda.github.io/blog/posts/implicit_bayes/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-01-23T19:56:17+09:00"><meta property="article:modified_time" content="2024-01-23T19:56:17+09:00"><meta property="og:site_name" content="Coffee, Codes, Mathematics and Heavy Metal"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","articleSection":"posts","name":"Implicit feedback for personalized ranking using Bayes theorem","headline":"Implicit feedback for personalized ranking using Bayes theorem","alternativeHeadline":"","description":"
+      
+        
+
+
+      
+
+
+    ","inLanguage":"en-us","isFamilyFriendly":"true","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/HirofumiTsuda.github.io\/blog\/posts\/implicit_bayes\/"},"author":{"@type":"Person","name":"Hirofumi Tsuda"},"creator":{"@type":"Person","name":"Hirofumi Tsuda"},"accountablePerson":{"@type":"Person","name":"Hirofumi Tsuda"},"copyrightHolder":{"@type":"Person","name":"Hirofumi Tsuda"},"copyrightYear":"2024","dateCreated":"2024-01-23T19:56:17.00Z","datePublished":"2024-01-23T19:56:17.00Z","dateModified":"2024-01-23T19:56:17.00Z","publisher":{"@type":"Organization","name":"Hirofumi Tsuda","url":"http://HirofumiTsuda.github.io/blog/","logo":{"@type":"ImageObject","url":"http:\/\/HirofumiTsuda.github.io\/blog\/favicon-32x32.png","width":"32","height":"32"}},"image":[],"url":"http:\/\/HirofumiTsuda.github.io\/blog\/posts\/implicit_bayes\/","wordCount":"1563","genre":["math"],"keywords":["optimization","recommendation"]}</script></head><body class=body><div class=wrapper><aside class=wrapper__sidebar><div class="sidebar
+animated fadeInDown"><div class=sidebar__content><div class=sidebar__introduction><img class=sidebar__introduction-profileimage src=/blog/assets/images/profile/profile.jpeg alt="profile picture"><div class=sidebar__introduction-title><a href=/blog>Coffee, Codes, Mathematics and Heavy Metal</a></div><div class=sidebar__introduction-description><p>A warehouse of my thoughts, ideas and studies</p></div></div><ul class=sidebar__list><li class=sidebar__list-item><a href=https://www.linkedin.com/in/hirofumitsuda23/ target=_blank rel="noopener me" aria-label title><i class="fab fa-linkedin fa-2x" aria-hidden=true></i></a></li></ul></div><footer class="footer footer__sidebar"><ul class=footer__list><li class=footer__item>&copy;
+Hirofumi Tsuda
+2024</li></ul></footer><script type=text/javascript src=/blog/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ=" crossorigin=anonymous></script><script defer type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity=sha384-e/4/LvThKH1gwzXhdbY2AsjR3rm7LHWyhIG5C0jiRfn8AN2eTN5ILeztWw0H9jmN crossorigin=anonymous></script>
+<script type=text/x-mathjax-config>
+      MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script></div></aside><main class=wrapper__main><header class=header><div class="animated fadeInDown"><a role=button class=navbar-burger data-target=navMenu aria-label=menu aria-expanded=false><span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span>
+<span aria-hidden=true class=navbar-burger__line></span></a><nav class=nav><ul class=nav__list id=navMenu><li class=nav__list-item><a href=/blog/ title>Home</a></li><li class=nav__list-item><a href=/blog/posts/ title>All Posts</a></li><li class=nav__list-item><a href=/blog/categories/ title>Categories</a></li><li class=nav__list-item><a href=/blog/tags/ title>Tags</a></li></ul><ul class="nav__list nav__list--end"><li class=nav__list-item><div class=themeswitch><a title="Switch Theme"><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></li></ul></nav></div></header><div class="post
+animated fadeInDown"><div class=post__content><h1>Implicit Feedback for Personalized Ranking Using Bayes Theorem</h1><h2 id=introduction>Introduction</h2><p>Before I have shown <a href=http://HirofumiTsuda.github.io/blog/posts/implicit1/>the fundamental</a> lying on a recommendation method called implicit-feedback.
+In statistics the Bayes theorem has been used and it is a powerful tool for machine learnings. I will show a method applying the Bayes theorem to the implicit feedback technique.</p><p>Compared to ones I have shown in my previous post, a method shown here focuses on personalized rankings, not scores like the number of clicks. However, the goal is the same in those methods and that is to show stuff people are interested in. Grasping ideas of the new method shown here would help you understand recommendation systems.</p><p>A paper shown here is <a href=#references>BPR: Bayesian personalized ranking from implicit feedback</a>. Let us see what it says.</p><h2 id=main-idea>Main Idea</h2><p>A main goal is to predict personalized rankings using feedbacks with some missing contents. In other methods, those missing values are often replaced with a certain value like 0.
+But this method gives it a try to keep those values as they are.</p><p>For our more precise exploration, let us define some formulae. Here, we want to think of showing an &lsquo;good&rsquo; item for an user. Some feedback like records about who have bought an item has already been observed. Let $I$ and $U$ be the sets of items and users, respectively. Feedback can be written as a matrix and it has a positive value as its component when an user $u$ has taken an action on an item $i$. That is regarded as positive. The other components do not have any values (literally missing values). We write the set of pairs of an user and an item on which the user have feedback as $S$.</p><p>Although some methods regard those missing values as negative, the Bayes method interprets the missing values as follows:</p><p>If an user $u$ has feedback about an item $u$ and doesn&rsquo;t have any feedback about an item $j$, then the ranking of $i$ is higher than one of $j$.</p><p>As seen in the above, the Bayes method provides us another idea on missing values. To give personalized rankings, we define the following symbol.</p><p>$$
+\begin{equation}
+i >_{u} j,
+\end{equation}
+$$</p><p>where $u$ denotes an user and $i$ and $j$ denote items. The above symbol means that an user $i$ set a higher ranking to an item $i$ compared to an item $j$.</p><p>Furthermore, the following sets are defined.</p><p>$$
+\begin{equation}
+\begin{split}
+I_u^+ &= \{i \in I \mid (u, i) \in S\} \\
+U_i^+ &= \{u \in U \mid (u, i) \in S\}.
+\end{split}
+\end{equation}
+$$</p><p>The aboves mean a set of items on which an user $u$ have sent feedback and a set of users by which an item $i$ have feedback. I have said the assumption lying on this Bayes-based method and that denotes relations of items between an item which an user has not seen and one which the user has seen. To describe the relation, we define the following symbol $D_S$.</p><p>$$
+\begin{equation}
+D_S = \{ (u,i,j) \mid i \in I_u^+ \land j \in I \backslash I_u^+ \}
+\end{equation}
+$$</p><p><img src=ds.png alt=ds></p><p>To summarize what we have seen as far, let us see the above figure taken from the original paper (Figure 2). A matrix on the left side denotes feedback and its column and row denote items and users, respectively. The symbol $+$ means there is feedback sent by an user to an item and $?$ represents a blank (no feedback). According to the assumption, for an user, they prefer an item with the symbol $+$ compared to one with the symbol $?$. That idea is shown on matrices on the right side of the figure. If a component at $(i, j)$ on the matrix is $+$, then a user would like the item $i$ compared to the item $j$. The symbol $-$ follows in the same manner. The symbol $?$ denotes there is no observed relation since both of the items are never seen or they have already been seen.</p><p>As shown in <a href=http://HirofumiTsuda.github.io/blog/posts/implicit1/>the previous post</a>, ideas based on matrix factorization are often used. In this paper, that factorization is going to be done.
+That matrix being factorized is regarded as a parameter. In a sense of a probability, that idea is written as $p(i >_{u} j | \Theta) $, where $\Theta$ is a parameter and often a matrix in the matrix factorization. We would like to predict $i >_{u} j$ for all the pairs of $(i, j)$ belonging to $S$ (other pairs not belonging to $S$ cannot be predicted because there are no clues). Using the maximum likelihood estimation let us predict the parameter $\Theta$. Since the parameter $\Theta$ only depends on $S$, we get</p><p>$$
+\begin{equation}
+p( >_u |\Theta) = \prod_{u, i,j} p(i >_{u} j | \Theta) = \prod_{(u, i, j) \in D_S} \prod_{(u, j, i) \in D_S} p(i >_{u} j | \Theta),
+\end{equation}
+$$</p><p>where $>|u$ denotes all the preferences between items of an user $u$ and $C$ is a constant (tuples not belonging $D_S$ are independent of $\Theta$). In the above we have used an assumption that each pair of preference between two items are independent. Furthermore, it is natural that $D_S$ is asymmetric with respect to $i$ and $j$, that is,</p><p>$$
+\begin{equation}
+p(i >_{u} j | \Theta) = 1 - p(j >_{u} i | \Theta).
+\end{equation}
+$$</p><p>The above means we can consider only tuples contained in $D_S$. Thus, using the Bayes theorem,</p><p>$$
+\begin{equation}
+p(\Theta | >_u) \propto \prod_{(u, i, j) \in D_S} p(i >_{u} j | \Theta) p(\Theta).
+\end{equation}
+$$</p><p>We can predict an optimal $\Theta$ if $p(i >_{u} j | \Theta)$ and $p(\Theta)$ are given. First, the conditional probability is modeled using the logistic function.
+It is written as</p><p>$$
+\begin{equation}
+p(i >_{u} j | \Theta) = \sigma(\hat{x}_{uij}(\Theta)) = \frac{1}{1 + \exp(-\hat{x}_{uij}(\Theta))},
+\end{equation}
+$$</p><p>where $\sigma$ is he logistic function and $\hat{x}_{uij}$ is a function mapping a parameter to $\mathbb{R}$. This $\hat{x}_{uij}$ is given later.</p><p>The remaining is $p(\Theta)$ and that is thought as a Gaussian with the zero mean and a covariance matrix $\Sigma_\Theta$. To reduce complexity, we set $\lambda_\Theta I$ to $\Sigma_\Theta$.</p><p>Now we get all the components required to predict $\Theta$. The goal is to maximize the following quantity.</p><p>$$
+\begin{equation}
+\begin{split}
+& \ln p(\Theta | >_u) \\
+\propto & \ln \prod_{(u, i, j) \in D_S} p(i >_{u} j | \Theta) p(\Theta) \\
+= & \sum_{(u, i, j) \in D_S} \ln p(i >_{u} j | \Theta) + \ln p(\Theta) \\
+\propto & \sum_{(u, i, j) \in D_S} \ln \sigma(\hat{x}_{uij}(\Theta)) - \lambda_\Theta \|\Theta\|.
+\end{split}
+\end{equation}
+$$</p><p>In the original paper, there two examples to define $\hat{x}_{uij}$. One uses k-nearest neighbor. Since this post is a succession of talks about matrix factorization, another example using the matrix factorization is shown.</p><p>To give personalized rankings, we consider scores for each item of an user. Here $\hat{x}_{ui}$ denotes the score of an item $i$ assigned to an user $u$. Using those scores, we define $\hat{x}_{uij}$ as</p><p>$$
+\begin{equation}
+\hat{x}_{uij} = \hat{x}_{ui} - \hat{x}_{uj}.
+\end{equation}
+$$</p><p>When we look back to the definition of $i >_u j$, the symbol denotes how much an user $u$ prefers an item $i$ compared to an user $j$. Thus it is natural that $\hat{x}_{uij}$ is represented as a difference between two scores, $\hat{x}_{ui}$ and $\hat{x}_{uj}$.</p><p>All the scores are considered as components of a matrix $\hat{X}$. It means $\hat{x}_{ui}$ is the $(u, i)$-th component of the matrix $\hat{X}$. Then using the matrix decomposition, $\hat{X}$ is rewritten as</p><p>$$
+\begin{equation}
+\hat{X} = WH^\top,
+\end{equation}
+$$</p><p>where $W \in \mathbb{R}^{|U| \times k}$, $H \in \mathbb{R}^{k \times |I|}$ and a parameter $k$ is a dimension you choose. Those two matrices $W$ and $H$ are the parameter $\Theta$.
+Note that the score $\hat{x}_{ui}$ is written as</p><p>$$
+\begin{equation}
+\hat{x}_{ui} = \sum_{f} w_{uf} h_{if}.
+\end{equation}
+$$</p><p>Using the above, we can get $\hat{x}_{uij}$.</p><p>As shown before, we have already seen the objective function to predict the parameter $\Theta$. Here $F$ denotes that function. To get an optimizer, it is required to differentiate the function $F$. That is written as</p><p>$$
+\begin{equation}
+\frac{\partial F}{\partial \Theta} = \sum_{(u, i, j) \in D_S)} \frac{\exp(-\hat{x}_{uij})}{1 + \exp(-\hat{x}_{uij})} \frac{\partial}{\partial \Theta} \hat{x}_{uij} + \lambda_\Theta \Theta.
+\end{equation}
+$$</p><p>Although the summation appears, this summation can be removed by using stochastic gradient method. First we draw a tuple $(u, i, j)$ from $D_S$ with the equal probability.
+Then with respect to variables in the tuple, the above gradient is calculated (literally removing the summation!) and a new parameter is obtained.</p><p>Since $\theta$ consists of the matrices $W$ and $H$, differentiation is done with respect to each component of $W and $H$. From the definition of $\hat{x}_{uij}$, it is straightforward to get the following.</p><p>$$
+\begin{equation}
+\frac{\partial \hat{x}_{uij}}{\partial \theta} = \left\{ \begin{array}{cc}
+h_{if} - h_{jf} & \mbox{if } \theta = w_{uf} \\
+w_{uf} & \mbox{if } \theta = h_{if} \\
+-w_{uf} & \mbox{if } \theta = h_{jf} \\
+0 & \mbox{else}
+\end{array}
+\right.
+\end{equation}
+$$</p><p>The stochastic gradient method is repeated until the parameter $\Theta$ converges. Then all the scores $(\hat{x}_{ui})_{u,i}$ are obtained. By sorting those scores, personalized rankings finally would be gotten.</p><h2 id=conclusion>Conclusion</h2><p>This paper is a milestone where the Bayes theorem is applied to implicit feedback. By setting appropriate distributions like logistic function types one and Gaussian, scores and rankings would be finally obtained.</p><h2 id=references>References</h2><ul><li>[Rendle] Rendle, Steffen, et al. &ldquo;BPR: Bayesian personalized ranking from implicit feedback.&rdquo; arXiv preprint arXiv:1205.2618 (2012).</li></ul></div><div class=post__footer><span><a class=category href=/blog/categories/math/>math</a></span>
+<span><a class=tag href=/blog/tags/optimization/>optimization</a><a class=tag href=/blog/tags/recommendation/>recommendation</a></span></div></div></main></div><footer class="footer footer__base"><ul class=footer__list><li class=footer__item>&copy;
+Hirofumi Tsuda
+2024</li></ul></footer><script type=text/javascript src=/blog/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ=" crossorigin=anonymous></script><script defer type=text/javascript src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity=sha384-e/4/LvThKH1gwzXhdbY2AsjR3rm7LHWyhIG5C0jiRfn8AN2eTN5ILeztWw0H9jmN crossorigin=anonymous></script>
+<script type=text/x-mathjax-config>
+      MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script></body></html>
